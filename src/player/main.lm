@@ -1,0 +1,10 @@
+//Create the player prefab.
+createPrefab!("player");
+
+//Add necessary behaviors to the player.
+useBehaviorPrefab!("player", "square_collider");
+useBehaviorPrefab!("player", "collision_resolver");
+useBehaviorPrefab!("player", "square");
+
+//Create a player object from the prefab.
+usePrefab!(-1, "player");

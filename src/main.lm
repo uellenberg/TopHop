@@ -1,0 +1,12 @@
+import templates from "graphgame";
+
+initialize!();
+
+//Create the viewport.
+usePrefab!(0, "window", 20, 10);
+
+//Import the world.
+import!("world/world.lm");
+
+//Import the player.
+import!("player/main.lm");
