@@ -1,0 +1,18 @@
+//Move the viewport to the right each frame.
+createBehavior!("viewport_mover");
+
+//Allow modifying x.
+setMut!("viewport_mover", "base.transform.x");
+
+setVal!("viewport_mover", "amount", .25);
+
+setValAction!("viewport_mover", "base.transform.x", {
+    state = x + getVal!("viewport_mover", "amount");
+});
+
+finalizeBehavior!("viewport_mover");
+
+//Create the viewport.
+usePrefab!(0, "window", 20, 10);
+//Make it move.
+useBehavior!(0, "viewport_mover");

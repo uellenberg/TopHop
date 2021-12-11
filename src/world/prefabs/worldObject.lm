@@ -4,7 +4,9 @@ createPrefab!("world_object");
 
 //Set this object to be a doa.
 useBehaviorPrefab!("world_object", "doa", "0");
-//Allow this object to be collided with.
+//Allow this object to be collided with. The 1 indicates that this
 useBehaviorPrefab!("world_object", "square_collider");
 //Make this object render.
 useBehaviorPrefab!("world_object", "square");
+//Make this object follow the viewport.
+useBehaviorPrefab!("world_object", "window_follower");

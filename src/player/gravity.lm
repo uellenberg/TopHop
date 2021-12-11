@@ -1,0 +1,21 @@
+//Create the gravity behavior.
+createBehavior!("gravity");
+
+//Allow gravity's direction to be changed.
+setVal!("gravity", "mul", 1);
+setMut!("gravity", "mul");
+
+//Apply gravity every frame, based on the multiplier.
+setValAction!("gravity", "base.transform.y", {
+    //Get the mul (true means to use the stored version, since we don't need the current version).
+    const mul = getVal!("gravity", "mul", true);
+
+    //Apply the gravity.
+    state = y - (.25 * mul);
+});
+
+noRegisterSetValAction!("gravity", "mul", {
+    state = -mul;
+}, "h_op");
+
+finalizeBehavior!("gravity");

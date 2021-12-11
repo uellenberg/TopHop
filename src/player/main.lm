@@ -1,3 +1,6 @@
+//Import behaviors.
+import!("player/gravity.lm");
+
 //Create the player prefab.
 createPrefab!("player");
 
@@ -5,6 +8,9 @@ createPrefab!("player");
 useBehaviorPrefab!("player", "square_collider");
 useBehaviorPrefab!("player", "collision_resolver");
 useBehaviorPrefab!("player", "square");
+
+//Add gravity to the player.
+useBehaviorPrefab!("player", "gravity");
 
 //Create a player object from the prefab.
 usePrefab!(-1, "player");
