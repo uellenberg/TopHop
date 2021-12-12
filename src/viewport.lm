@@ -1,14 +1,35 @@
 //Move the viewport to the right each frame.
 createBehavior!("viewport_mover");
 
-//Allow modifying x.
+//Allow modifying x & y.
 setMut!("viewport_mover", "base.transform.x");
+setMut!("viewport_mover", "base.transform.y");
 
 setVal!("viewport_mover", "amount", .25);
 
 setValAction!("viewport_mover", "base.transform.x", {
-    state = x + getVal!("viewport_mover", "amount");
-});
+    const player_x = {
+        state = 0;
+
+        selectBehavior!("player", {
+            state = getValSelect!("transform.x");
+        });
+    };
+
+    state = x + getVal!("viewport_mover", "amount") + player_x;
+}, 10);
+
+setValAction!("viewport_mover", "base.transform.y", {
+    const player_y = {
+        state = 0;
+
+        selectBehavior!("player", {
+            state = getValSelect!("transform.y");
+        });
+    };
+
+    state = y + player_y;
+}, 10);
 
 finalizeBehavior!("viewport_mover");
 

@@ -1,8 +1,30 @@
 //Import behaviors.
 import!("player/gravity.lm");
 
+//Create the player behavior.
+createBehavior!("player");
+
+//Allow modifying x & y.
+setMut!("player", "base.transform.x");
+setMut!("player", "base.transform.y");
+
+//Set x & y back to 0 (11 means it goes after the viewport is updated).
+setValAction!("player", "base.transform.x", {
+    state = 0;
+}, 11);
+
+setValAction!("player", "base.transform.y", {
+    state = 0;
+}, 11);
+
+//Finalize the behavior.
+finalizeBehavior!("player");
+
 //Create the player prefab.
 createPrefab!("player");
+
+//Add the player behavior to the player.
+useBehaviorPrefab!("player", "player");
 
 //Add necessary behaviors to the player.
 useBehaviorPrefab!("player", "square_collider");

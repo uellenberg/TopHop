@@ -19,3 +19,6 @@ usePrefab!(-1, "mount_point", 0, 47, -4, 12, 1);
 
 usePrefab!(-1, "mount_point", 0, 59, 2, 12, 1);
 usePrefab!(-1, "mount_point", 0, 59, -2, 12, 1);
+
+usePrefab!(-1, "mount_point", 0, 75, 5, 12, 3);
+usePrefab!(-1, "mount_point", 0, 85, -10, 12, 3);
