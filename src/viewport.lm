@@ -34,6 +34,6 @@ setValAction!("viewport_mover", "base.transform.y", {
 finalizeBehavior!("viewport_mover");
 
 //Create the viewport.
-usePrefab!(0, "window", 25, 15);
+usePrefab!(0, "window", 22, 14);
 //Make it move.
 useBehavior!(0, "viewport_mover");
