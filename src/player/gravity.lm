@@ -14,8 +14,26 @@ setValAction!("gravity", "base.transform.y", {
     state = y - (.25 * mul);
 });
 
+//Colliders are -300, so run at -290 to go after them.
+setVal!("gravity", "grounded", 0);
+setInline!("gravity", "grounded");
+
+setValAction!("gravity", "grounded", {
+    //If they are colliding with something, then they are grounded.
+    if(getVal!("gravity", "base.transform.collision_y") != 0) {
+        state = 1;
+    } else {
+        state = 0;
+    }
+}, -290);
+
 noRegisterSetValAction!("gravity", "mul", {
-    state = -mul;
+    //Only reverse gravity if they are grounded.
+    if(getVal!("gravity", "grounded")) {
+        state = -mul;
+    } else {
+        state = mul;
+    }
 }, "h_op");
 
 finalizeBehavior!("gravity");
