@@ -17,6 +17,19 @@ setValAction!("viewport_mover", "base.transform.x", {
     };
 
     state = x + getVal!("viewport_mover", "amount") + player_x;
+
+    //Check if they are dead, and if they are, reset to (0,0).
+    const dead = {
+        state = 0;
+
+        selectBehavior!("death", {
+            state = getValSelect!("death.dead");
+        });
+    };
+
+    if(dead) {
+        state = 0;
+    }
 }, 10);
 
 setValAction!("viewport_mover", "base.transform.y", {
@@ -29,6 +42,19 @@ setValAction!("viewport_mover", "base.transform.y", {
     };
 
     state = y + player_y;
+
+    //Check if they are dead, and if they are, reset to (0,0).
+    const dead = {
+        state = 0;
+
+        selectBehavior!("death", {
+            state = getValSelect!("death.dead");
+        });
+    };
+
+    if(dead) {
+        state = 0;
+    }
 }, 10);
 
 finalizeBehavior!("viewport_mover");

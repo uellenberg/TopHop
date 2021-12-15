@@ -1,0 +1,43 @@
+inline const max_height = 20;
+
+//Create the behavior.
+createBehavior!("death");
+
+//Colliders are -300, so run at -295 to go after them.
+
+//Find out if we're dead.
+setVal!("death", "dead", 0);
+setInline!("death", "dead");
+
+setValAction!("death", "dead", {
+    //Check if the collision on the x-axis is greater than or equal to the y-collision (and there is a collision),
+    //or if the player exceeded the maximum height.
+
+    state = 0;
+
+    const viewport_y = {
+        state = 0;
+
+        selectBehavior!("window", {
+            state = getValSelect!("transform.y");
+        });
+    };
+
+    if((abs(getVal!("death", "base.transform.collision_x")) < abs(getVal!("death", "base.transform.collision_y")) && getVal!("death", "base.transform.collision_x") != 0) ||
+       abs(viewport_y) > max_height
+    ) {
+        state = 1;
+    }
+}, -295);
+
+//Reset gravity if the player died.
+setValAction!("death", "base.gravity.mul", {
+    state = mul;
+
+    if(getVal!("death", "dead")) {
+        state = 1;
+    }
+});
+
+//Finalize the behavior.
+finalizeBehavior!("death");
