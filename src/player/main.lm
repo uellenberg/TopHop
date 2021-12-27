@@ -1,6 +1,7 @@
 //Import behaviors.
 import!("player/gravity.lm");
 import!("player/death.lm");
+import!("player/timer.lm");
 
 //Create the player behavior.
 createBehavior!("player");
@@ -35,8 +36,11 @@ useBehaviorPrefab!("player", "square");
 //Add gravity to the player.
 useBehaviorPrefab!("player", "gravity");
 
-//Add the death prefab to the player.
+//Add death to the player.
 useBehaviorPrefab!("player", "death");
+
+//Add the timer to the player.
+useBehaviorPrefab!("player", "timer");
 
 //Create a player object from the prefab.
 usePrefab!(-1, "player");

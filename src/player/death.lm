@@ -13,6 +13,8 @@ setValAction!("death", "dead", {
     //Check if the collision on the x-axis is greater than or equal to the y-collision (and there is a collision),
     //or if the player exceeded the maximum height.
 
+    //Also checks if the player's timer ran out.
+
     state = 0;
 
     const viewport_y = {
@@ -24,7 +26,8 @@ setValAction!("death", "dead", {
     };
 
     if((abs(getVal!("death", "base.transform.collision_x")) < abs(getVal!("death", "base.transform.collision_y")) && getVal!("death", "base.transform.collision_x") != 0) ||
-       abs(viewport_y) > max_height
+       abs(viewport_y) > max_height ||
+       getVal!("death", "base.timer.time") <= 0
     ) {
         state = 1;
     }
