@@ -1,0 +1,9 @@
+polygon({
+    const x = 0;
+    const y = 0;
+
+    const x_scale = 100;
+    const y_scale = 100;
+
+    state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)];
+});

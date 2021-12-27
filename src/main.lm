@@ -10,3 +10,9 @@ import!("world/world.lm");
 
 //Import the player.
 import!("player/main.lm");
+
+//Import the background.
+import!("background.lm");
+
+//Import the colors.
+import!("colors.lm");
