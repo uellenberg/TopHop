@@ -4,7 +4,7 @@
 import!("world/prefabs/worldObject.lm");
 
 //This line helps level development. It should only be used in development.
-import!("world/dev.lm");
+//import!("world/dev.lm");
 
 import!("world/level1/main.lm");
 
