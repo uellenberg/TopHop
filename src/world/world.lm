@@ -3,6 +3,9 @@
 //Import everything.
 import!("world/prefabs/worldObject.lm");
 
+//This line helps level development. It should only be used in development.
+import!("world/dev.lm");
+
 import!("world/level1/main.lm");
 
 //Create a DOAs for world rendering (layer 0).
