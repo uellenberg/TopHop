@@ -32,3 +32,18 @@ usePrefab!(-1, "mount_point", 0, 134, -9, 4, 1.5);
 
 usePrefab!(-1, "mount_point", 0, 152, -3, 33, 1);
 usePrefab!(-1, "mount_point", 0, 152, -8, 3.5, 1.5);
+
+usePrefab!(-1, "mount_point", 0, 179, 2, 20, 1);
+usePrefab!(-1, "mount_point", 0, 179, -8, 20, 1);
+
+usePrefab!(-1, "mount_point", 0, 199, 6, 20, 1);
+usePrefab!(-1, "mount_point", 0, 199, -4, 20, 1);
+
+usePrefab!(-1, "mount_point", 0, 219, 10, 20, 1);
+usePrefab!(-1, "mount_point", 0, 219, 0, 20, 1);
+
+usePrefab!(-1, "mount_point", 0, 239, 14, 20, 1);
+usePrefab!(-1, "mount_point", 0, 239, 4, 20, 1);
+
+usePrefab!(-1, "mount_point", 0, 259, 18, 20, 1);
+usePrefab!(-1, "mount_point", 0, 259, 8, 20, 1);
