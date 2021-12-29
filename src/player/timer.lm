@@ -1,4 +1,4 @@
-inline const timer_time_decay = .015;
+inline const timer_time_decay = .016;
 
 inline const timer_x = 0;
 inline const timer_y = -4;
