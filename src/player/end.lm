@@ -1,0 +1,31 @@
+inline const end_x = 280;
+
+//Create the behavior.
+createBehavior!("game_end");
+
+//Colliders are -300, so run at -295 to go after them.
+
+//Find out if we're dead.
+setVal!("game_end", "ended", 0);
+setInline!("game_end", "ended");
+
+setValAction!("game_end", "ended", {
+    //Check if the x-position is greater than the end_x.
+
+    state = 0;
+
+    const viewport_x = {
+        state = 0;
+
+        selectBehavior!("window", {
+            state = getValSelect!("transform.x");
+        });
+    };
+
+    if(viewport_x > end_x) {
+        state = 1;
+    }
+}, -295);
+
+//Finalize the behavior.
+finalizeBehavior!("game_end");

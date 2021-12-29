@@ -2,6 +2,7 @@
 import!("player/gravity.lm");
 import!("player/death.lm");
 import!("player/timer.lm");
+import!("player/end.lm");
 
 //Create the player behavior.
 createBehavior!("player");
@@ -41,6 +42,9 @@ useBehaviorPrefab!("player", "death");
 
 //Add the timer to the player.
 useBehaviorPrefab!("player", "timer");
+
+//Add the game end checker to the player.
+useBehaviorPrefab!("player", "game_end");
 
 //Create a player object from the prefab.
 usePrefab!(-1, "player");

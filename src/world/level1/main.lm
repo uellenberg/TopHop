@@ -3,6 +3,8 @@ This file defines the structure for the first level. Specifically, it contains t
 These types of objects exist on layer 0.
 */
 
+usePrefab!(-1, "mount_point", 0, -20, -4, 18, 1);
+
 usePrefab!(-1, "mount_point", 0, 0, 4, 18, 1);
 usePrefab!(-1, "mount_point", 0, 0, -4, 18, 1);
 
@@ -45,5 +47,5 @@ usePrefab!(-1, "mount_point", 0, 219, 0, 20, 1);
 usePrefab!(-1, "mount_point", 0, 239, 14, 20, 1);
 usePrefab!(-1, "mount_point", 0, 239, 4, 20, 1);
 
-usePrefab!(-1, "mount_point", 0, 259, 18, 20, 1);
-usePrefab!(-1, "mount_point", 0, 259, 8, 20, 1);
+usePrefab!(-1, "mount_point", 0, 259, 10, 20, 1);
+usePrefab!(-1, "mount_point", 0, 259, 0, 20, 1);

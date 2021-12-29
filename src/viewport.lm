@@ -27,8 +27,20 @@ setValAction!("viewport_mover", "base.transform.x", {
         });
     };
 
+    //Check if they reached the end, and if they are, go to the end game location.
+    const ended = {
+        state = 0;
+
+        selectBehavior!("game_end", {
+            state = getValSelect!("game_end.ended");
+        });
+    };
+
+    //If they are dead or the player's x if after the game end point.
     if(dead) {
         state = 0;
+    } else if(ended) {
+        state = -20;
     }
 }, 10);
 
@@ -52,7 +64,17 @@ setValAction!("viewport_mover", "base.transform.y", {
         });
     };
 
-    if(dead) {
+    //Check if they reached the end, and if they are, go to the end game location.
+    const ended = {
+        state = 0;
+
+        selectBehavior!("game_end", {
+            state = getValSelect!("game_end.ended");
+        });
+    };
+
+    //If they are dead or the player's x if after the game end point.
+    if(dead || ended) {
         state = 0;
     }
 }, 10);
