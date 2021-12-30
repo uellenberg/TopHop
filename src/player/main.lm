@@ -4,6 +4,7 @@ import!("player/death.lm");
 import!("player/timer.lm");
 import!("player/end.lm");
 import!("player/rotate.lm");
+import!("player/score.lm");
 
 //Create the player behavior.
 createBehavior!("player");
@@ -49,6 +50,9 @@ useBehaviorPrefab!("player", "game_end");
 
 //Make the player rotate.
 useBehaviorPrefab!("player", "rotate");
+
+//Make the player have a score.
+useBehaviorPrefab!("player", "score");
 
 //Create a player object from the prefab.
 usePrefab!(-1, "player");

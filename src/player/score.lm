@@ -1,0 +1,76 @@
+inline const rounded_digits = 3;
+//Uses end_x from end.lm.
+
+//Create the behavior.
+createBehavior!("score");
+
+//Store the amount of full games played.
+setVal!("score", "games", 0);
+setMut!("score", "games");
+
+//Make the full score (full games + percent of the current game) inline.
+setVal!("score", "score", 0);
+setInline!("score", "score");
+
+//Store the high-score.
+setVal!("score", "high_score", 0);
+setMut!("score", "high_score");
+
+//Update the games if the player is dead or the game ended.
+setValAction!("score", "games", {
+    if(getVal!("score", "base.death.dead")) {
+        state = 0;
+    } else if(getVal!("score", "base.game_end.ended")) {
+        state = games + 1;
+    } else {
+        state = games;
+    }
+});
+
+//Update the score to the games + the percent of the game played.
+setValAction!("score", "score", {
+    const viewport_x = {
+        state = 0;
+
+        selectBehavior!("window", {
+            state = getValSelect!("transform.x");
+        });
+    };
+
+    const games = getVal!("score", "games");
+    const percent = viewport_x/end_x;
+
+    //Lock the percent to 0-1.
+    const locked_percent = min(1, max(0, percent));
+
+    //Return the games + percent.
+    state = games + percent;
+}, -295);
+
+//Update the high score to the highest score.
+setValAction!("score", "high_score", {
+    state = max(high_score, getVal!("score", "score"));
+});
+
+behaviorCustom!("score", {
+    //Store the score in a global variable.
+    export const s_core = round(getVal!("score", "score"), rounded_digits);
+    export const h_score = round(getVal!("score", "high_score"), rounded_digits);
+
+    //Create points for the scores.
+    point (-5, 4);
+    point (-5, 3);
+
+    //Render a background for the scores.
+    polygon({
+        const x = -5;
+        const y = 3.5;
+        const x_scale = 4;
+        const y_scale = 2;
+
+        state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)];
+    });
+});
+
+//Finalize the behavior.
+finalizeBehavior!("score");
