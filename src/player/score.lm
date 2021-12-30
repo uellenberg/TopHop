@@ -45,7 +45,7 @@ setValAction!("score", "score", {
 
     //Return the games + percent.
     state = games + percent;
-}, -295);
+}, -295, true, true);
 
 //Update the high score to the highest score.
 setValAction!("score", "high_score", {

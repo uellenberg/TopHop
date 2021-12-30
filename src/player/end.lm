@@ -25,7 +25,7 @@ setValAction!("game_end", "ended", {
     if(viewport_x > end_x) {
         state = 1;
     }
-}, -295);
+}, -295, true, true);
 
 //Finalize the behavior.
 finalizeBehavior!("game_end");
