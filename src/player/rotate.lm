@@ -1,0 +1,20 @@
+inline const rotation_mul = -.15;
+
+//Create the behavior.
+createBehavior!("rotate");
+
+//Make the rotation mutable.
+setMut!("rotate", "base.transform.rotation");
+
+//Update the rotation.
+setValAction!("rotate", "base.transform.rotation", {
+    //If we are grounded, reset the rotation, otherwise increment it.
+    if(getVal!("rotate", "base.gravity.grounded")) {
+        state = 0;
+    } else {
+        state = rotation + rotation_mul*getVal!("rotate", "base.gravity.mul");
+    }
+});
+
+//Finalize the behavior.
+finalizeBehavior!("rotate");
