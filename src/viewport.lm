@@ -1,3 +1,5 @@
+inline const new_game_x = -20;
+
 //Move the viewport to the right each frame.
 createBehavior!("viewport_mover");
 
@@ -40,7 +42,7 @@ setValAction!("viewport_mover", "base.transform.x", {
     if(dead) {
         state = 0;
     } else if(ended) {
-        state = -20;
+        state = new_game_x;
     }
 }, 10);
 

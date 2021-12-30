@@ -1,3 +1,5 @@
+inline const gravity_val = .25;
+
 //Create the gravity behavior.
 createBehavior!("gravity");
 
@@ -11,7 +13,7 @@ setValAction!("gravity", "base.transform.y", {
     const mul = getVal!("gravity", "mul", true);
 
     //Apply the gravity.
-    state = y - (.25 * mul);
+    state = y - (gravity_val * mul);
 });
 
 //Colliders are -300, so run at -290 to go after them.
