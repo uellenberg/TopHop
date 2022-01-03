@@ -1,3 +1,9 @@
+display color = c_4;
+display fill = 1;
+display thickness = 0;
+display opacity = 0;
+display click = h_op;
+
 polygon({
     const x = 0;
     const y = 0;
