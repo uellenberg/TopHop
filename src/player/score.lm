@@ -58,13 +58,27 @@ behaviorCustom!("score", {
     export const h_score = round(getVal!("score", "high_score"), rounded_digits);
 
     //Create points for the scores.
-    point (-5, 4);
-    point (-5, 3);
+    display label = "Score: ${s_core}";
+    display hidden = true;
+    display color = c_5;
+    
+    point (-5, 3.5);
+    
+    display label = "High Score: ${h_score}";
+    display hidden = true;
+    display color = c_5;
+    
+    point (-5, 2.5);
 
     //Render a background for the scores.
+    display color = c_6;
+    display fill = 1;
+    display stroke = 0;
+    display thickness = 0;
+    
     polygon({
         const x = -5;
-        const y = 3.5;
+        const y = 3;
         const x_scale = 4;
         const y_scale = 2;
 

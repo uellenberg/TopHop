@@ -33,6 +33,11 @@ setValAction!("timer", "time", {
 //Render the timer.
 behaviorCustom!("timer", {
     //Render the timer outline.
+    display color = c_6;
+    display fill = 1;
+    display stroke = 0;
+    display thickness = 0;
+    
     polygon({
         const x = timer_x;
         const y = timer_y;
@@ -43,6 +48,11 @@ behaviorCustom!("timer", {
     });
 
     //Render the timer itself.
+    display color = c_5;
+    display fill = 1;
+    display stroke = 0;
+    display thickness = 0;
+    
     polygon({
         //Adjust the scale to match the time.
         const x_scale = timer_width*getVal!("timer", "time", true);

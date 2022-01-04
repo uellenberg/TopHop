@@ -1,5 +1,17 @@
 //A doa for main world objects.
 
+createBehavior!("world_object");
+
+//Set the display properties of world objects.
+setDisplay!("world_object", {
+    display color = c_2;
+    display fill = .7;
+    display stroke = 0;
+    display thickness = 0;
+});
+
+finalizeBehavior!("world_object");
+
 createPrefab!("world_object");
 
 //Set this object to be a doa.
@@ -10,3 +22,5 @@ useBehaviorPrefab!("world_object", "square_collider", 1);
 useBehaviorPrefab!("world_object", "square");
 //Make this object follow the viewport.
 useBehaviorPrefab!("world_object", "window_follower");
+//Give the object style.
+useBehaviorPrefab!("world_object", "world_object");

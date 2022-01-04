@@ -22,6 +22,12 @@ setValAction!("player", "base.transform.y", {
     state = 0;
 }, 11);
 
+//Give the player color.
+setDisplay!("player", {
+    display color = c_3;
+    display fill = .7;
+});
+
 //Finalize the behavior.
 finalizeBehavior!("player");
 
