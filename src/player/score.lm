@@ -1,6 +1,11 @@
 inline const rounded_digits = 3;
 //Uses end_x from end.lm.
 
+inline const score_x = 0;
+inline const score_y = -5.5;
+inline const score_width = 14;
+inline const score_height = 2;
+
 //Create the behavior.
 createBehavior!("score");
 
@@ -62,13 +67,13 @@ behaviorCustom!("score", {
     display hidden = true;
     display color = c_5;
     
-    point (-5, 3.5);
+    point (0, -5.25);
     
     display label = "High Score: ${h_score}";
     display hidden = true;
     display color = c_5;
     
-    point (-5, 2.5);
+    point (0, -5.75);
 
     //Render a background for the scores.
     display color = c_6;
@@ -77,12 +82,7 @@ behaviorCustom!("score", {
     display thickness = 0;
     
     polygon({
-        const x = -5;
-        const y = 3;
-        const x_scale = 4;
-        const y_scale = 2;
-
-        state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)];
+        state = (score_x, score_y) + score_width*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + score_height*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)];
     });
 });
 
