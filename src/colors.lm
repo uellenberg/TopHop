@@ -1,16 +1,20 @@
 color c_1 = rgb(23, 0, 85);
 
-//Platform color.
 color c_2 = rgb(33, 26, 29);
 
-//Player color.
 color c_3 = rgb(0, 110, 144);
 
-//Background color.
-color c_4 = rgb(126, 178, 151);
+//Player color.
+color c_4 = rgb(126, 178, 170);
 
 //Timer.
 color c_5 = rgb(184, 15, 10);
 
 //Timer (background).
 color c_6 = rgb(98, 93, 93);
+
+//Background color.
+color c_7 = rgb(29, 37, 46);
+
+//Platform color.
+color c_8 = rgb(128,38,87);

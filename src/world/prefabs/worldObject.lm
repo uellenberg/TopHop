@@ -3,7 +3,7 @@
 createBehavior!("world_object", {
     //Set the display properties of world objects.
     setDisplay!({
-        display color = c_2;
+        display color = c_8;
         display fill = .7;
         display stroke = 0;
         display thickness = 0;

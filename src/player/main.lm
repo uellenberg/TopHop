@@ -23,8 +23,10 @@ createBehavior!("player", {
 
     //Give the player color.
     setDisplay!({
-        display color = c_3;
+        display color = c_4;
         display fill = .7;
+        display stroke = 0;
+        display thickness = 0;
     });
 });
 
