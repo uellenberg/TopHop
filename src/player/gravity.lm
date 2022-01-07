@@ -1,50 +1,49 @@
 inline const gravity_val = .25;
 
 //Create the gravity behavior.
-createBehavior!("gravity");
+createBehavior!("gravity", {
+    //Allow gravity's direction to be changed.
+    setVal!("mul", 1);
+    setMut!("mul");
 
-//Allow gravity's direction to be changed.
-setVal!("gravity", "mul", 1);
-setMut!("gravity", "mul");
+    //Apply gravity every frame, based on the multiplier.
+    setValAction!("base.transform.y", {
+        //Get the mul (true means to use the stored version, since we don't need the current version).
+        const mul = getVal!("mul", true);
 
-//Apply gravity every frame, based on the multiplier.
-setValAction!("gravity", "base.transform.y", {
-    //Get the mul (true means to use the stored version, since we don't need the current version).
-    const mul = getVal!("gravity", "mul", true);
+        //Apply the gravity.
+        state = y - (gravity_val * mul);
+    });
 
-    //Apply the gravity.
-    state = y - (gravity_val * mul);
-});
+    //Colliders are -300, so run at -290 to go after them.
+    setVal!("grounded", 0);
+    setInline!("grounded");
 
-//Colliders are -300, so run at -290 to go after them.
-setVal!("gravity", "grounded", 0);
-setInline!("gravity", "grounded");
+    setValAction!("grounded", {
+        //If they are colliding with something, then they are grounded.
+        if(getVal!("base.transform.collision_y") != 0) {
+            state = 1;
+        } else {
+            state = 0;
+        }
+    }, -290);
 
-setValAction!("gravity", "grounded", {
-    //If they are colliding with something, then they are grounded.
-    if(getVal!("gravity", "base.transform.collision_y") != 0) {
-        state = 1;
-    } else {
-        state = 0;
-    }
-}, -290);
-
-//Reset gravity if the player died or the game ended.
-setValAction!("gravity", "mul", {
-    state = mul;
-
-    if(getVal!("gravity", "base.death.dead") || getVal!("gravity", "base.game_end.ended")) {
-        state = 1;
-    }
-});
-
-noRegisterSetValAction!("gravity", "mul", {
-    //Only reverse gravity if they are grounded.
-    if(getVal!("gravity", "grounded")) {
-        state = -mul;
-    } else {
+    //Reset gravity if the player died or the game ended.
+    setValAction!("mul", {
         state = mul;
-    }
-}, "h_op");
 
-finalizeBehavior!("gravity");
+        if(getVal!("base.death.dead") || getVal!("base.game_end.ended")) {
+            state = 1;
+        }
+    });
+
+    //Create a "h_op" action that only runs on user input, which reverses gravity.
+    noRegisterSetValAction!("mul", {
+        //Only reverse gravity if they are grounded.
+        if(getVal!("grounded")) {
+            state = -mul;
+        } else {
+            state = mul;
+        }
+    }, "h_op");
+});

@@ -7,58 +7,55 @@ import!("player/rotate.lm");
 import!("player/score.lm");
 
 //Create the player behavior.
-createBehavior!("player");
+createBehavior!("player", {
+    //Allow modifying x & y.
+    setMut!("base.transform.x");
+    setMut!("base.transform.y");
 
-//Allow modifying x & y.
-setMut!("player", "base.transform.x");
-setMut!("player", "base.transform.y");
+    //Set x & y back to 0 (11 means it goes after the viewport is updated).
+    setValAction!("base.transform.x", {
+        state = 0;
+    }, 11);
 
-//Set x & y back to 0 (11 means it goes after the viewport is updated).
-setValAction!("player", "base.transform.x", {
-    state = 0;
-}, 11);
+    setValAction!("base.transform.y", {
+        state = 0;
+    }, 11);
 
-setValAction!("player", "base.transform.y", {
-    state = 0;
-}, 11);
-
-//Give the player color.
-setDisplay!("player", {
-    display color = c_3;
-    display fill = .7;
+    //Give the player color.
+    setDisplay!({
+        display color = c_3;
+        display fill = .7;
+    });
 });
 
-//Finalize the behavior.
-finalizeBehavior!("player");
-
 //Create the player prefab.
-createPrefab!("player");
+createPrefab!("player", {
+    //Add the player behavior to the player.
+    useBehaviorPrefab!("player");
 
-//Add the player behavior to the player.
-useBehaviorPrefab!("player", "player");
+    //Add necessary behaviors to the player.
+    useBehaviorPrefab!("square_collider");
+    useBehaviorPrefab!("collision_resolver");
+    useBehaviorPrefab!("square");
 
-//Add necessary behaviors to the player.
-useBehaviorPrefab!("player", "square_collider");
-useBehaviorPrefab!("player", "collision_resolver");
-useBehaviorPrefab!("player", "square");
+    //Add gravity to the player.
+    useBehaviorPrefab!("gravity");
 
-//Add gravity to the player.
-useBehaviorPrefab!("player", "gravity");
+    //Add death to the player.
+    useBehaviorPrefab!("death");
 
-//Add death to the player.
-useBehaviorPrefab!("player", "death");
+    //Add the timer to the player.
+    useBehaviorPrefab!("timer");
 
-//Add the timer to the player.
-useBehaviorPrefab!("player", "timer");
+    //Add the game end checker to the player.
+    useBehaviorPrefab!("game_end");
 
-//Add the game end checker to the player.
-useBehaviorPrefab!("player", "game_end");
+    //Make the player rotate.
+    useBehaviorPrefab!("rotate");
 
-//Make the player rotate.
-useBehaviorPrefab!("player", "rotate");
-
-//Make the player have a score.
-useBehaviorPrefab!("player", "score");
+    //Make the player have a score.
+    useBehaviorPrefab!("score");
+});
 
 //Create a player object from the prefab.
-usePrefab!(-1, "player");
+usePrefab!("player", null);

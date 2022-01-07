@@ -1,40 +1,38 @@
 //Display all mount points.
-useBehaviorPrefab!("mount_point", "square");
+extendPrefab!("mount_point", {
+    useBehaviorPrefab!("square");
+});
 
 //Create a draggable square.
-createBehavior!("dev_square");
+createBehavior!("dev_square", {
+    setMut!("base.transform.x");
+    setMut!("base.transform.y");
+    setMut!("base.transform.scale_x");
+    setMut!("base.transform.scale_y");
 
-setMut!("dev_square", "base.transform.x");
-setMut!("dev_square", "base.transform.y");
-setMut!("dev_square", "base.transform.scale_x");
-setMut!("dev_square", "base.transform.scale_y");
+    behaviorCustom!({
+        point (getVal!("base.transform.x"), getVal!("base.transform.y"));
+        point (getVal!("base.transform.x") + getVal!("base.transform.scale_x")/2, getVal!("base.transform.y") + getVal!("base.transform.scale_y")/2);
 
-behaviorCustom!("dev_square", {
-    point (getVal!("dev_square", "base.transform.x"), getVal!("dev_square", "base.transform.y"));
-    point (getVal!("dev_square", "base.transform.x") + getVal!("dev_square", "base.transform.scale_x")/2, getVal!("dev_square", "base.transform.y") + getVal!("dev_square", "base.transform.scale_y")/2);
+        expression {
+            state = getVal!("base.transform.x");
+        }
 
-    expression {
-        state = getVal!("dev_square", "base.transform.x");
-    }
+        expression {
+            state = getVal!("base.transform.y");
+        }
 
-    expression {
-        state = getVal!("dev_square", "base.transform.y");
-    }
+        expression {
+            state = getVal!("base.transform.scale_x");
+        }
 
-    expression {
-        state = getVal!("dev_square", "base.transform.scale_x");
-    }
+        expression {
+            state = getVal!("base.transform.scale_y");
+        }
+    }, -400);
+});
 
-    expression {
-        state = getVal!("dev_square", "base.transform.scale_y");
-    }
-}, -400);
-
-finalizeBehavior!("dev_square");
-
-createPrefab!("dev_square");
-
-useBehaviorPrefab!("dev_square", "dev_square");
-useBehaviorPrefab!("dev_square", "square");
-
-usePrefab!(-1, "dev_square");
+createObject({
+    useBehaviorPrefab!("dev_square");
+    useBehaviorPrefab!("square");
+});

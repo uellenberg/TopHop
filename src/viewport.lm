@@ -1,89 +1,88 @@
 inline const new_game_x = -20;
 
 //Move the viewport to the right each frame.
-createBehavior!("viewport_mover");
+createBehavior!("viewport_mover", {
+    //Allow modifying x & y.
+    setMut!("base.transform.x");
+    setMut!("base.transform.y");
 
-//Allow modifying x & y.
-setMut!("viewport_mover", "base.transform.x");
-setMut!("viewport_mover", "base.transform.y");
+    setVal!("amount", .25);
 
-setVal!("viewport_mover", "amount", .25);
+    setValAction!("base.transform.x", {
+        const player_x = {
+            state = 0;
 
-setValAction!("viewport_mover", "base.transform.x", {
-    const player_x = {
-        state = 0;
+            selectBehavior!("player", {
+                state = getValSelect!("transform.x");
+            });
+        };
 
-        selectBehavior!("player", {
-            state = getValSelect!("transform.x");
-        });
-    };
+        state = x + getVal!("amount") + player_x;
 
-    state = x + getVal!("viewport_mover", "amount") + player_x;
+        //Check if they are dead, and if they are, reset to (0,0).
+        const dead = {
+            state = 0;
 
-    //Check if they are dead, and if they are, reset to (0,0).
-    const dead = {
-        state = 0;
+            selectBehavior!("death", {
+                state = getValSelect!("death.dead");
+            });
+        };
 
-        selectBehavior!("death", {
-            state = getValSelect!("death.dead");
-        });
-    };
+        //Check if they reached the end, and if they are, go to the end game location.
+        const ended = {
+            state = 0;
 
-    //Check if they reached the end, and if they are, go to the end game location.
-    const ended = {
-        state = 0;
+            selectBehavior!("game_end", {
+                state = getValSelect!("game_end.ended");
+            });
+        };
 
-        selectBehavior!("game_end", {
-            state = getValSelect!("game_end.ended");
-        });
-    };
+        //If they are dead or the player's x if after the game end point.
+        if(dead) {
+            state = 0;
+        } else if(ended) {
+            state = new_game_x;
+        }
+    }, 10);
 
-    //If they are dead or the player's x if after the game end point.
-    if(dead) {
-        state = 0;
-    } else if(ended) {
-        state = new_game_x;
-    }
-}, 10);
+    setValAction!("base.transform.y", {
+        const player_y = {
+            state = 0;
 
-setValAction!("viewport_mover", "base.transform.y", {
-    const player_y = {
-        state = 0;
+            selectBehavior!("player", {
+                state = getValSelect!("transform.y");
+            });
+        };
 
-        selectBehavior!("player", {
-            state = getValSelect!("transform.y");
-        });
-    };
+        state = y + player_y;
 
-    state = y + player_y;
+        //Check if they are dead, and if they are, reset to (0,0).
+        const dead = {
+            state = 0;
 
-    //Check if they are dead, and if they are, reset to (0,0).
-    const dead = {
-        state = 0;
+            selectBehavior!("death", {
+                state = getValSelect!("death.dead");
+            });
+        };
 
-        selectBehavior!("death", {
-            state = getValSelect!("death.dead");
-        });
-    };
+        //Check if they reached the end, and if they are, go to the end game location.
+        const ended = {
+            state = 0;
 
-    //Check if they reached the end, and if they are, go to the end game location.
-    const ended = {
-        state = 0;
+            selectBehavior!("game_end", {
+                state = getValSelect!("game_end.ended");
+            });
+        };
 
-        selectBehavior!("game_end", {
-            state = getValSelect!("game_end.ended");
-        });
-    };
-
-    //If they are dead or the player's x if after the game end point.
-    if(dead || ended) {
-        state = 0;
-    }
-}, 10);
-
-finalizeBehavior!("viewport_mover");
+        //If they are dead or the player's x if after the game end point.
+        if(dead || ended) {
+            state = 0;
+        }
+    }, 10);
+});
 
 //Create the viewport.
-usePrefab!(0, "window", 22, 14);
-//Make it move.
-useBehavior!(0, "viewport_mover");
+usePrefab!("window", {
+    //Make it move.
+    useBehavior!("viewport_mover");
+}, 22, 14);
