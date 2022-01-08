@@ -32,6 +32,23 @@ createBehavior!("timer", {
     //Render the timer.
     behaviorCustom!({
         //Render the timer outline.
+        display color = c_9;
+        display fill = 1;
+        display stroke = 0;
+        display thickness = 0;
+
+        polygon({
+            const thickness = .025 * 2;
+        
+            const x = timer_x;
+            const y = timer_y;
+            const x_scale = timer_width+thickness;
+            const y_scale = timer_height+thickness;
+
+            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-1/5, 0), (0, 0), (1/5, 0), (0, 0)];
+        });
+    
+        //Render the timer background.
         display color = c_6;
         display fill = 1;
         display stroke = 0;
@@ -43,7 +60,7 @@ createBehavior!("timer", {
             const x_scale = timer_width;
             const y_scale = timer_height;
 
-            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)];
+            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-1/5, 0), (0, 0), (1/5, 0), (0, 0)];
         });
 
         //Render the timer itself.
@@ -61,7 +78,7 @@ createBehavior!("timer", {
             const x = timer_x - (timer_width - x_scale)/2;
             const y = timer_y;
 
-            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)];
+            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-1/5, 0), (0, 0), (1/5, 0), (0, 0)];
         });
     });
 });
