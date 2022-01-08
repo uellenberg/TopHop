@@ -1,9 +1,10 @@
 inline const timer_time_decay = .016;
 
-inline const timer_x = 0;
-inline const timer_y = -4;
-inline const timer_width = 8;
+inline const timer_x = .4;
+inline const timer_y = -3;
+inline const timer_width = 8.4;
 inline const timer_height = .5;
+inline const timer_degree = 1/5;
 
 //Create the behavior.
 createBehavior!("timer", {
@@ -45,7 +46,7 @@ createBehavior!("timer", {
             const x_scale = timer_width+thickness;
             const y_scale = timer_height+thickness;
 
-            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-1/5, 0), (0, 0), (1/5, 0), (0, 0)];
+            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-timer_degree, 0), (0, 0), (-timer_degree, 0), (0, 0)];
         });
     
         //Render the timer background.
@@ -60,7 +61,7 @@ createBehavior!("timer", {
             const x_scale = timer_width;
             const y_scale = timer_height;
 
-            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-1/5, 0), (0, 0), (1/5, 0), (0, 0)];
+            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-timer_degree, 0), (0, 0), (-timer_degree, 0), (0, 0)];
         });
 
         //Render the timer itself.
@@ -78,7 +79,7 @@ createBehavior!("timer", {
             const x = timer_x - (timer_width - x_scale)/2;
             const y = timer_y;
 
-            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-1/5, 0), (0, 0), (1/5, 0), (0, 0)];
+            state = (x, y) + x_scale*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + y_scale*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(-timer_degree, 0), (0, 0), (-timer_degree, 0), (0, 0)];
         });
     });
 });

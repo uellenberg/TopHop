@@ -2,9 +2,10 @@ inline const rounded_digits = 3;
 //Uses end_x from end.lm.
 
 inline const score_x = 0;
-inline const score_y = -5.5;
-inline const score_width = 14;
-inline const score_height = 2;
+inline const score_y = -4;
+inline const score_width = 8;
+inline const score_height = 1.25;
+inline const score_degree = 3/5;
 
 //Create the behavior.
 createBehavior!("score", {
@@ -64,15 +65,29 @@ createBehavior!("score", {
         //Create points for the scores.
         display label = "Score: ${s_core}";
         display hidden = true;
-        display color = c_5;
+        display color = c_9;
+        display outline = false;
 
-        point (0, -5.25);
+        point (.25, -3.75);
 
         display label = "High Score: ${h_score}";
         display hidden = true;
-        display color = c_5;
+        display color = c_9;
+        display outline = false;
 
-        point (0, -5.75);
+        point (.25, -4.25);
+        
+        //Render the score background outline.
+        display color = c_9;
+        display fill = 1;
+        display stroke = 0;
+        display thickness = 0;
+
+        polygon({
+            const thickness = .025 * 2;
+
+            state = (score_x, score_y) + (score_width+thickness)*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + (score_height+thickness)*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(score_degree, 0), (0, 0), (score_degree, 0), (0, 0)];
+        });
 
         //Render a background for the scores.
         display color = c_6;
@@ -81,7 +96,7 @@ createBehavior!("score", {
         display thickness = 0;
 
         polygon({
-            state = (score_x, score_y) + score_width*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + score_height*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)];
+            state = (score_x, score_y) + score_width*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + score_height*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(score_degree, 0), (0, 0), (score_degree, 0), (0, 0)];
         });
     });
 });
