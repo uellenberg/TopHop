@@ -3,10 +3,10 @@
 createBehavior!("world_object", {
     //Set the display properties of world objects.
     setDisplay!({
-        display color = c_8;
-        display fill = .7;
-        display stroke = 0;
-        display thickness = 0;
+        display color = c_2;
+        display fill = 1;
+        display stroke = 1;
+        display thickness = 1;
     });
 });
 
@@ -21,4 +21,8 @@ createPrefab!("world_object", {
     useBehaviorPrefab!("window_follower");
     //Give the object style.
     useBehaviorPrefab!("world_object");
+    //Give the object an ourline.
+    useBehaviorPrefab!("square_outline", {
+        display color = c_9;
+    }, .025);
 });

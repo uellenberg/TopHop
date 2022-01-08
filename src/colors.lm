@@ -17,4 +17,7 @@ export const c_6 = rgb(98, 93, 93);
 export const c_7 = rgb(29, 37, 46);
 
 //Platform color.
-export const c_8 = rgb(128,38,87);
+export const c_8 = rgb(128, 38, 87);
+
+//Platform outline color.
+export const c_9 = rgb(240, 248, 255);
