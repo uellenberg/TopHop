@@ -1,20 +1,20 @@
-color c_1 = rgb(23, 0, 85);
+export const c_1 = rgb(23, 0, 85);
 
-color c_2 = rgb(33, 26, 29);
+export const c_2 = rgb(33, 26, 29);
 
-color c_3 = rgb(0, 110, 144);
+export const c_3 = rgb(0, 110, 144);
 
 //Player color.
-color c_4 = rgb(126, 178, 170);
+export const c_4 = rgb(126, 178, 170);
 
 //Timer.
-color c_5 = rgb(184, 15, 10);
+export const c_5 = rgb(184, 15, 10);
 
 //Timer (background).
-color c_6 = rgb(98, 93, 93);
+export const c_6 = rgb(98, 93, 93);
 
 //Background color.
-color c_7 = rgb(29, 37, 46);
+export const c_7 = rgb(29, 37, 46);
 
 //Platform color.
-color c_8 = rgb(128,38,87);
+export const c_8 = rgb(128,38,87);
