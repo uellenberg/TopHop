@@ -21,11 +21,7 @@ createBehavior!("gravity", {
 
     setValAction!("grounded", {
         //If they are colliding with something, then they are grounded.
-        if(getVal!("base.transform.collision_y") != 0) {
-            state = 1;
-        } else {
-            state = 0;
-        }
+        state = getVal!("base.transform.collision_y") != 0;
     }, -290);
 
     //Reset gravity if the player died or the game ended.
