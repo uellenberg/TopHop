@@ -1,0 +1,7 @@
+Hello! This is a game I made called TopHop (click the screen). It's intended to be a bit of a technical demo for a tool I've been building for creating games/animations in Desmos. Also, this project is open-source: https://github.com/uellenberg/TopHop.
+
+The repository above has more information (as well as links) and I'd highly recommend that you check it out, so I'll keep this brief: this game is built in my game engine, called Graphgame. Graphgame is meant to make it super easy to built things in Desmos. The syntax it uses (a language called Logimat) is meant to resemble a traditional programming language, and it provides several features that both make it easier for someone less experienced in Desmos and that help people write less code. At its core, Graphgame is a tool for breaking down complicated projects into smaller, reusable pieces.
+
+The main motivation for this is that I wanted to create something at transcends the art competition. Desmos is a powerful tool for building interactive math demonstrations, but making anything complicated is, well... complicated. The point of Graphgame is to have a system that makes it simple to create these things. It also helps make a project more accessible for those interested in it.
+
+Also, if you want to see Graphgame's DOA system in action, zoom out a bit. You can also open the folder below to see the code if you'd like, but be warned that it is meant to be compiled code, and probably isn't the most readable. The source code, however, is readable, and I'd recommend you check it out.

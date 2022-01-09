@@ -21,4 +21,4 @@ Graphgame and Logimat include quite a few features not listed here, and so I'd h
 - Fast collision detection that's essential to any game or animation.
 - DOA (Dynamic Object Allocation) system that allows several objects to be represented with only a few. For example, TopHop has 30 different world elements, but only needs 9 objects to represent them.
 
-Logimat also allows code to be separated into different files
+Logimat also allows code to be separated into different files.
