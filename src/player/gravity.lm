@@ -45,15 +45,16 @@ createBehavior!("gravity", {
     noRegisterSetValAction!("mul", {
         state = mul;
 
-        const ended = {
+        const game = {
             state = 0;
 
             selectBehavior!("game_manager", {
-                state = getValSelect!("game_manager.ended");
+                state = getValSelect!("game_manager.game");
             });
         };
 
-        if(getVal!("base.death.dead") || ended) {
+        //Only reset if the game is not running.
+        if(!game) {
             state = 1;
         }
     }, "g_ame4");
