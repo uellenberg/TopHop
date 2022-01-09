@@ -63,19 +63,13 @@ createBehavior!("score", {
         export const h_score = round(getVal!("high_score"), rounded_digits)*1000;
 
         //Create points for the scores.
-        display label = "Score: ${s_core}";
+        display label = "${s_core} / ${h_score}";
         display hidden = true;
         display color = c_9;
         display outline = false;
+        display size = 2;
 
-        point (.25, -3.75);
-
-        display label = "High Score: ${h_score}";
-        display hidden = true;
-        display color = c_9;
-        display outline = false;
-
-        point (.25, -4.25);
+        point (.25, -4);
         
         //Render the score background outline.
         display color = c_9;
