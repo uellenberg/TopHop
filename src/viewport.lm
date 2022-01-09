@@ -6,7 +6,24 @@ createBehavior!("viewport_mover", {
     setMut!("base.transform.x");
     setMut!("base.transform.y");
 
+    //Create the amount, starting at .25.
     setVal!("amount", .25);
+    setInline!("amount");
+    
+    //Update the amount to be affected by the number of games played.
+    //For example, the first game will be .25, the second .3, etc.
+    setValAction!("amount", {
+        //First, find the score.
+        const score = {
+            state = 0;
+
+            selectBehavior!("score", {
+                state = getValSelect!("score.score");
+            });
+        };
+        
+        state = .25 + (.05 * score);
+    });
 
     setValAction!("base.transform.x", {
         const player_x = {

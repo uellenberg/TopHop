@@ -59,8 +59,8 @@ createBehavior!("score", {
 
     behaviorCustom!({
         //Store the score in a global variable.
-        export const s_core = round(getVal!("score"), rounded_digits);
-        export const h_score = round(getVal!("high_score"), rounded_digits);
+        export const s_core = round(getVal!("score"), rounded_digits)*1000;
+        export const h_score = round(getVal!("high_score"), rounded_digits)*1000;
 
         //Create points for the scores.
         display label = "Score: ${s_core}";
