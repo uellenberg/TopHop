@@ -28,15 +28,48 @@ createBehavior!("gravity", {
     setValAction!("mul", {
         state = mul;
 
-        if(getVal!("base.death.dead") || getVal!("base.game_end.ended")) {
+        const ended = {
+            state = 0;
+
+            selectBehavior!("game_manager", {
+                state = getValSelect!("game_manager.ended");
+            });
+        };
+
+        if(getVal!("base.death.dead") || ended) {
             state = 1;
         }
     });
+    
+    //Create an action that resets gravity when the game starts (see gameManager.lm).
+    noRegisterSetValAction!("mul", {
+        state = mul;
+
+        const ended = {
+            state = 0;
+
+            selectBehavior!("game_manager", {
+                state = getValSelect!("game_manager.ended");
+            });
+        };
+
+        if(getVal!("base.death.dead") || ended) {
+            state = 1;
+        }
+    }, "g_ame4");
 
     //Create a "h_op" action that only runs on user input, which reverses gravity.
     noRegisterSetValAction!("mul", {
-        //Only reverse gravity if they are grounded.
-        if(getVal!("grounded")) {
+        const game = {
+            state = 0;
+
+            selectBehavior!("game_manager", {
+                state = getValSelect!("game_manager.game");
+            });
+        };
+    
+        //Only reverse gravity if they are grounded and the game is running.
+        if(getVal!("grounded") && game) {
             state = -mul;
         } else {
             state = mul;

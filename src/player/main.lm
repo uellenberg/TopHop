@@ -2,9 +2,9 @@
 import!("player/gravity.lm");
 import!("player/death.lm");
 import!("player/timer.lm");
-import!("player/end.lm");
 import!("player/rotate.lm");
 import!("player/score.lm");
+import!("player/autoHop.lm");
 
 //Create the player behavior.
 createBehavior!("player", {
@@ -49,14 +49,14 @@ createPrefab!("player", {
     //Add the timer to the player.
     useBehaviorPrefab!("timer");
 
-    //Add the game end checker to the player.
-    useBehaviorPrefab!("game_end");
-
     //Make the player rotate.
     useBehaviorPrefab!("rotate");
 
     //Make the player have a score.
     useBehaviorPrefab!("score");
+    
+    //Make the player automatically hop on the title screen.
+    useBehaviorPrefab!("auto_hop");
 });
 
 //Create a player object from the prefab.

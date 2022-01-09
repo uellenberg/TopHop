@@ -46,18 +46,10 @@ createBehavior!("viewport_mover", {
         };
 
         //Check if they reached the end, and if they are, go to the end game location.
-        const ended = {
-            state = 0;
-
-            selectBehavior!("game_end", {
-                state = getValSelect!("game_end.ended");
-            });
-        };
-
         //If they are dead or the player's x if after the game end point.
         if(dead) {
             state = 0;
-        } else if(ended) {
+        } else if(getVal!("base.game_manager.ended")) {
             state = new_game_x;
         }
     }, 10);
@@ -83,16 +75,8 @@ createBehavior!("viewport_mover", {
         };
 
         //Check if they reached the end, and if they are, go to the end game location.
-        const ended = {
-            state = 0;
-
-            selectBehavior!("game_end", {
-                state = getValSelect!("game_end.ended");
-            });
-        };
-
         //If they are dead or the player's x if after the game end point.
-        if(dead || ended) {
+        if(dead || getVal!("base.game_manager.ended")) {
             state = 0;
         }
     }, 10);
@@ -102,4 +86,6 @@ createBehavior!("viewport_mover", {
 usePrefab!("window", {
     //Make it move.
     useBehavior!("viewport_mover");
+    //Add the game manager to it.
+    useBehavior!("game_manager");
 }, 22, 14);

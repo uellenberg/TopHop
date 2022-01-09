@@ -1,0 +1,68 @@
+//This behavior does the actual "auto hopping" of the title screen. Basically, it checks if the viewport is at a certain x-position, and if it is, it hops.
+
+createBehavior!("auto_hop", {
+    //We need a counter to only run the hop every 2nd frame.
+    //The reason we do this is that if we update every frame, the game won't have enough time to become ungrounded (and for the hops to not be able to run), so multiple hops will go after each other. In the end, the result is no hops at all.
+    setVal!("count", 0);
+    setMut!("count");
+    
+    setValAction!("count", {
+        state = (count + 1) % 2;
+    });
+
+    setValAction!("base.gravity.mul", {
+        state = mul;
+        
+        //First, we need to make sure that the game is not running to hop.
+        const game = {
+            state = 0;
+
+            selectBehavior!("game_manager", {
+                state = getValSelect!("game_manager.game");
+            });
+        };
+        
+        //We also need to make sure that we are grounded.
+        //Finally, we check that the couter is at 0. This gives the hop enough time to register.
+        if(!game && getVal!("base.gravity.grounded") && getVal!("count") == 0) {
+            //Next, we'll get the current position of the viewport.
+            const x_raw = {
+                state = 0;
+        
+                selectBehavior!("window", {
+                    state = getValSelect!("transform.x");
+                });
+            };
+            
+            //We can't guarantee that we'll be at exactly the x-value, so we'll get it into the closest value of .5. To do that, all we need to do is multiply it by two, floor it, then divide it by two.
+            const x = floor(x_raw);
+            const x_2 = floor(x_raw*2)/2;
+            
+            //And finally, we'll reverse the mul if one of these conditions matches.
+            if(
+                x == -12 ||
+                x == -6 ||
+                x == 8 ||
+                x == 18 ||
+                x == 38 ||
+                x == 50 ||
+                x_2 == 64.5 ||
+                x == 77 ||
+                x == 90 ||
+                x == 104 ||
+                x == 118 ||
+                x == 130 ||
+                x == 135 ||
+                x == 148 ||
+                x == 153 ||
+                x == 188 ||
+                x == 204 ||
+                x == 227 ||
+                x == 245 ||
+                x == 258
+            ) {
+                state = -mul;
+            }
+        }
+    });
+});

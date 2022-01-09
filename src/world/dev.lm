@@ -32,7 +32,7 @@ createBehavior!("dev_square", {
     }, -400);
 });
 
-createObject({
-    useBehaviorPrefab!("dev_square");
-    useBehaviorPrefab!("square");
+createObject!({
+    useBehavior!("dev_square");
+    useBehavior!("square");
 });

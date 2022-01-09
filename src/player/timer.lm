@@ -15,15 +15,7 @@ createBehavior!("timer", {
     //Reduce the time every frame, or reset it if we aren't grounded.
     setValAction!("time", {
         //Reset the timer if they died.
-        const dead = {
-            state = 0;
-
-            selectBehavior!("death", {
-                state = getValSelect!("death.dead");
-            });
-        };
-
-        if(!getVal!("base.gravity.grounded") || dead) {
+        if(!getVal!("base.gravity.grounded") || getVal!("base.death.dead")) {
             state = 1;
         } else {
             state = time - timer_time_decay;

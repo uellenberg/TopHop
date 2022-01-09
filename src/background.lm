@@ -2,7 +2,7 @@ display color = c_7;
 display fill = 1;
 display thickness = 0;
 display stroke = 0;
-display click = h_op;
+display click = g_o;
 
 polygon({
     const x = 0;

@@ -1,0 +1,60 @@
+//This provides the "title screen" functionality that makes the game "play itself" until the user interacts. During this stage, the score panel will be hidden and won't count, and the speed won't increase. As soon as the user interacts, the position will be reset and the game will actually run.
+
+//The game manager also handles ending the game.
+
+inline const end_x = 280;
+
+createBehavior!("game_manager", {
+    //Colliders are -300, so run at -295 to go after them.
+
+    //Find out if we're dead.
+    setVal!("ended", 0);
+    setInline!("ended");
+
+    setValAction!("ended", {
+        //Check if the x-position is greater than the end_x.
+
+        state = 0;
+
+        if(getVal!("base.transform.x") > end_x) {
+            state = 1;
+        }
+    }, -295, true, true);
+
+    //First, we want to have a variable to store the state of the game (title screen or actual game).
+    setVal!("game", 0);
+    setMut!("game");
+    
+    //Next, we want to create several actions that will do the updating when we move from the title screen to the game itself.
+    //The first thing is to set game to 1.
+    //The reason that this is noRegisterSetValAction is because we only want to set it when we want to, not on every frame.
+    //Also, for this it doesn't matter, but for other updates we'll want to make sure the game is 0 before resetting values, as we only want to start the game once.
+    
+    //This goes at 12 so that the game updates after the positions do, otherwise the positions would always see game == 1.
+    noRegisterSetValAction!("game", {
+        state = 1;
+    }, "g_ame1", 12);
+    
+    //Next, we'll reset the x and y position (but only if the game isn't running).
+    //We run these at 11 so they go after the viewport's normal updates (which go at 10).
+    noRegisterSetValAction!("base.transform.x", {
+        if(!getVal!("game")) {
+            state = 0;
+        } else {
+            state = x;
+        }
+    }, "g_ame2", 11);
+    
+    noRegisterSetValAction!("base.transform.y", {
+        if(!getVal!("game")) {
+            state = 0;
+        } else {
+            state = y;
+        }
+    }, "g_ame3", 11);
+    
+    //And finally, we'll want to store all of these in a single action, to make them easily callable. We'll also add the hop action in here. In the end, the first click will only call our game actions, and the second will only call hop.
+    
+    //Game 4 is found in gravity.lm.
+    actions g_o = g_ame1, g_ame2, g_ame3, g_ame4, h_op;
+});
