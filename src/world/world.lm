@@ -1,12 +1,12 @@
 //Handles world objects.
 
 //Import everything.
-import!("world/prefabs/worldObject.lm");
+import!("prefabs/worldObject.lm");
 
 //This line helps level development. It should only be used in development.
-//import!("world/dev.lm");
+//import!("dev.lm");
 
-import!("world/level1/main.lm");
+import!("level1/main.lm");
 
 //Create a DOAs for world rendering (layer 0).
 usePrefab!("world_object", null, 0);

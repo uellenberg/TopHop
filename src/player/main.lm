@@ -1,10 +1,10 @@
 //Import behaviors.
-import!("player/gravity.lm");
-import!("player/death.lm");
-import!("player/timer.lm");
-import!("player/rotate.lm");
-import!("player/score.lm");
-import!("player/autoHop.lm");
+import!("gravity.lm");
+import!("death.lm");
+import!("timer.lm");
+import!("rotate.lm");
+import!("score.lm");
+import!("autoHop.lm");
 
 //Create the player behavior.
 createBehavior!("player", {
