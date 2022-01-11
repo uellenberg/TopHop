@@ -87,24 +87,7 @@ createBehavior!("score", {
     });
 
     behaviorCustom!({
-        //Use a y-offset to hide the score when the game isn't actually running.
-        inline const score_y_offset = {
-            //Figure out if there's a game currently running.
-            const game = {
-                state = 0;
-
-                selectBehavior!("game_manager", {
-                    state = getValSelect!("game_manager.game");
-                });
-            };
-            
-            //If the value is 1, then the game is running and we don't need any x-offset, otherwise it isn't and we need one.
-            if(game) {
-                state = 0;
-            } else {
-                state = -100;
-            }
-        };
+        //Uses timer_y_offset from gameManager.lm.
     
         //Store the score in a global variable.
         export const s_core = round(getVal!("score"), rounded_digits)*1000;
@@ -117,7 +100,7 @@ createBehavior!("score", {
         display outline = false;
         display size = 2;
 
-        point (.25, -4 + score_y_offset);
+        point (.25, -4 + timer_y_offset);
         
         //Render the score background outline.
         display color = c_9;
@@ -128,7 +111,7 @@ createBehavior!("score", {
         polygon({
             const thickness = .025 * 2;
 
-            state = (score_x, score_y + score_y_offset) + (score_width+thickness)*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + (score_height+thickness)*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(score_degree, 0), (0, 0), (score_degree, 0), (0, 0)];
+            state = (score_x, score_y + timer_y_offset) + (score_width+thickness)*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + (score_height+thickness)*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(score_degree, 0), (0, 0), (score_degree, 0), (0, 0)];
         });
 
         //Render a background for the scores.
@@ -138,7 +121,7 @@ createBehavior!("score", {
         display thickness = 0;
 
         polygon({
-            state = (score_x, score_y + score_y_offset) + score_width*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + score_height*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(score_degree, 0), (0, 0), (score_degree, 0), (0, 0)];
+            state = (score_x, score_y + timer_y_offset) + score_width*[(-1/2, 0), (1/2, 0), (1/2, 0), (-1/2, 0)] + score_height*[(0, -1/2), (0, -1/2), (0, 1/2), (0, 1/2)] + [(score_degree, 0), (0, 0), (score_degree, 0), (0, 0)];
         });
     });
 });

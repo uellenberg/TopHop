@@ -57,4 +57,16 @@ createBehavior!("game_manager", {
     
     //Game 4 is found in gravity.lm.
     actions g_o = g_ame1, g_ame2, g_ame3, g_ame4, h_op;
+    
+    //This should be a helper but there is a bug with behaviors preventing it.
+    behaviorCustom!({
+        inline const timer_y_offset = {
+            //If the value is 1, then the game is running and we don't need any x-offset, otherwise it isn't and we need one.
+            if(getVal!("game")) {
+                state = 0;
+            } else {
+                state = -100;
+            }
+        };
+    });
 });
