@@ -29,36 +29,33 @@ createBehavior!("player", {
     });
 });
 
-//Create the player prefab.
-createPrefab!("player", {
+//Create the player object.
+createObject!({
     //Add the player behavior to the player.
-    useBehaviorPrefab!("player");
+    useBehavior!("player");
 
     //Add necessary behaviors to the player.
-    useBehaviorPrefab!("square_collider");
-    useBehaviorPrefab!("collision_resolver");
-    useBehaviorPrefab!("square");
+    useBehavior!("square_collider");
+    useBehavior!("collision_resolver");
+    useBehavior!("square");
 
     //Add gravity to the player.
-    useBehaviorPrefab!("gravity");
+    useBehavior!("gravity");
 
     //Add death to the player.
-    useBehaviorPrefab!("death");
+    useBehavior!("death");
 
     //Add the timer to the player.
-    useBehaviorPrefab!("timer");
+    useBehavior!("timer");
 
     //Make the player rotate.
-    useBehaviorPrefab!("rotate");
+    useBehavior!("rotate");
 
     //Make the player have a score.
-    useBehaviorPrefab!("score");
+    useBehavior!("score");
     
     //Make the player automatically hop on the title screen.
-    useBehaviorPrefab!("auto_hop");
+    useBehavior!("auto_hop");
 
-    useBehaviorPrefab!("player_style");
+    useBehavior!("player_style");
 });
-
-//Create a player object from the prefab.
-usePrefab!("player", null);
