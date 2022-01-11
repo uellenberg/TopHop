@@ -5,6 +5,7 @@ import!("timer.lm");
 import!("rotate.lm");
 import!("score.lm");
 import!("autoHop.lm");
+import!("style.lm");
 
 //Create the player behavior.
 createBehavior!("player", {
@@ -23,10 +24,8 @@ createBehavior!("player", {
 
     //Give the player color.
     setDisplay!({
-        display color = c_4;
+        display color = c_3;
         display fill = .7;
-        display stroke = 0;
-        display thickness = 0;
     });
 });
 
@@ -57,6 +56,8 @@ createPrefab!("player", {
     
     //Make the player automatically hop on the title screen.
     useBehaviorPrefab!("auto_hop");
+
+    useBehaviorPrefab!("player_style");
 });
 
 //Create a player object from the prefab.

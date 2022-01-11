@@ -3,9 +3,10 @@ export const c_1 = rgb(23, 0, 85);
 //Platform color.
 export const c_2 = rgb(33, 26, 29);
 
+//Player color.
 export const c_3 = rgb(0, 110, 144);
 
-//Player color.
+//Player inner color.
 export const c_4 = rgb(126, 178, 170);
 
 //Timer.
