@@ -9,10 +9,6 @@ import!("style.lm");
 
 //Create the player behavior.
 createBehavior!("player", {
-    //Allow modifying x & y.
-    setMut!("base.transform.x");
-    setMut!("base.transform.y");
-
     //Set x & y back to 0 (11 means it goes after the viewport is updated).
     setValAction!("base.transform.x", {
         state = 0;

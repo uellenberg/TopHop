@@ -4,7 +4,6 @@ inline const gravity_val = .25;
 createBehavior!("gravity", {
     //Allow gravity's direction to be changed.
     setVal!("mul", 1);
-    setMut!("mul");
 
     //Apply gravity every frame, based on the multiplier.
     setValAction!("base.transform.y", {

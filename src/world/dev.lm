@@ -5,11 +5,6 @@ extendPrefab!("mount_point", {
 
 //Create a draggable square.
 createBehavior!("dev_square", {
-    setMut!("base.transform.x");
-    setMut!("base.transform.y");
-    setMut!("base.transform.scale_x");
-    setMut!("base.transform.scale_y");
-
     behaviorCustom!({
         point (getVal!("base.transform.x"), getVal!("base.transform.y"));
         point (getVal!("base.transform.x") + getVal!("base.transform.scale_x")/2, getVal!("base.transform.y") + getVal!("base.transform.scale_y")/2);

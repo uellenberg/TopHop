@@ -2,10 +2,6 @@ inline const new_game_x = -20;
 
 //Move the viewport to the right each frame.
 createBehavior!("viewport_mover", {
-    //Allow modifying x & y.
-    setMut!("base.transform.x");
-    setMut!("base.transform.y");
-
     //Create the amount, starting at .25.
     setVal!("amount", .25);
     setInline!("amount");

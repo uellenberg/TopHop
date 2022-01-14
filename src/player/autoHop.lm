@@ -4,7 +4,6 @@ createBehavior!("auto_hop", {
     //We need a counter to only run the hop every 2nd frame.
     //The reason we do this is that if we update every frame, the game won't have enough time to become ungrounded (and for the hops to not be able to run), so multiple hops will go after each other. In the end, the result is no hops at all.
     setVal!("count", 0);
-    setMut!("count");
     
     setValAction!("count", {
         state = (count + 1) % 2;

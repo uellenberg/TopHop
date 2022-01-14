@@ -23,8 +23,7 @@ createBehavior!("game_manager", {
 
     //First, we want to have a variable to store the state of the game (title screen or actual game).
     setVal!("game", 0);
-    setMut!("game");
-    
+
     //Next, we want to create several actions that will do the updating when we move from the title screen to the game itself.
     //The first thing is to set game to 1.
     //The reason that this is noRegisterSetValAction is because we only want to set it when we want to, not on every frame.

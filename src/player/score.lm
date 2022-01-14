@@ -11,7 +11,6 @@ inline const score_degree = 3/5;
 createBehavior!("score", {
     //Store the amount of full games played.
     setVal!("games", 0);
-    setMut!("games");
 
     //Make the full score (full games + percent of the current game) inline.
     setVal!("score", 0);
@@ -19,7 +18,6 @@ createBehavior!("score", {
 
     //Store the high-score.
     setVal!("high_score", 0);
-    setMut!("high_score");
 
     //Update the games if the player is dead (or the game isn't running) or the game ended.
     setValAction!("games", {

@@ -10,7 +10,6 @@ inline const timer_degree = 1/5;
 createBehavior!("timer", {
     //Store the time.
     setVal!("time", 1);
-    setMut!("time");
 
     //Reduce the time every frame, or reset it if we aren't grounded.
     setValAction!("time", {
