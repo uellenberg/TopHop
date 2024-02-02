@@ -1,5 +1,5 @@
 # TopHop
-Link: [https://www.desmos.com/calculator/lqr66vwfgf](https://www.desmos.com/calculator/ymdvbihlcn).
+Link: https://www.desmos.com/calculator/ymdvbihlcn.
 
 TopHot is a game for Desmos, written using [Graphgame](https://github.com/uellenberg/Graphgame) and [Logimat](https://github.com/uellenberg/Logimat). It's one of the winners for Desmos' 2023 Math Art Competition, as well as a technical demo/example for Graphgame.
 
